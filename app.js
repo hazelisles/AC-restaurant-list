@@ -19,6 +19,16 @@ app.get('/restaurants/:id', (req, res) => {
   res.render('show', { restaurant: theOne })
 })
 
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword
+  const restaurant = restaurantList.results.filter(r => r.category.includes(keyword) || r.name.toLowerCase().includes(keyword.toLowerCase()))
+  let unFind = false
+  if (restaurant.length === 0) {
+    unFind = true
+  }
+  res.render('index', { restaurant, keyword, unFind })
+})
+
 app.listen(port, () => {
   console.log(`Start listening on http://localhost:${port}`)
 })

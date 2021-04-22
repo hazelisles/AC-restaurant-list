@@ -6,7 +6,7 @@
         <h4 class="mb-2">尋找餐廳：</h4>
         <div class="input-group">
           <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
-            value="" aria-describedby="search-button">
+            value="{{keyword}}" aria-describedby="search-button">
           <div class="input-group-append">
             <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search">Search</i></button>
           </div>
@@ -19,6 +19,12 @@
 <!-- restaurant list -->
 <div class="container mt-5">
   <div class="row">
+    {{#if unFind}}
+    <div class="alertText">
+      <p>沒有搜尋到任何符合關鍵字：{{keyword}} 的餐廳</p>
+      <p>Can not find any Restaurant with keyword: {{keyword}}</p>
+    </div>
+    {{/if}}
     <div class="col-md-10 col-12 mx-auto">
       <div class="card-columns">
         {{#each restaurant}}
