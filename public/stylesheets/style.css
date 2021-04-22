@@ -76,13 +76,53 @@ header {
   color: white;
   text-align: center;
   font-size: 3rem;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  text-shadow: 0.1rem 0.1rem 0.3rem black, -0.1rem -0.1rem 0.5rem black;
+  font-weight: bold;
 }
 
 .alertText {
   margin: 0 auto;
   font-family: "Trebuchet MS", "Lucida Sans", sans-serif;
   font-size: 1.5rem;
+}
+
+.sub-t {
+  font-size: 1.3rem;
+}
+
+.place-arrow:hover {
+  transform: scale(1.1);
+}
+
+.place-arrow:active {
+  transform: scale(0.96);
+  transition: transform 0.2s;
+}
+
+.show-des {
+  position: relative;
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  background-color: rgba(255, 237, 219, 0.7);
+  border-radius: 5px;
+}
+
+.quote-left {
+  position: absolute;
+  top: -0.5rem;
+  left: -0.5rem;
+}
+
+.quote-right {
+  position: absolute;
+  bottom: -0.5rem;
+  right: -0.5rem;
+}
+
+.res-image {
+  box-shadow: 3px 3px 1px rgba(0, 0, 255, 1), -3px -3px 1px rgba(255, 0, 0, 1),
+    5px 5px rgba(0, 0, 255, 0.5), -5px -5px rgba(255, 0, 0, 0.5),
+    7px 7px 5px rgba(0, 0, 255, 0.3), -7px -7px 5px rgba(255, 0, 0, 0.3);
 }
 
 @media screen and (max-width: 992px) {
