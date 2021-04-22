@@ -1,14 +1,20 @@
+<div class="container header-text">
+  <h2 class="h-text-one my-3">FIND YOUR FAVORITE RESTAURANT</h2>
+  <h2 class="h-text-two my-3">Chose a restaurant to enjoy below</h2>
+</div>
+
 <!-- search bar -->
 <div class="container search-bar">
   <div class="search-bar-outer">
     <div class="search-bar-inner">
       <form action="/search">
-        <h4 class="mb-2">尋找餐廳：</h4>
+        <h4 class="mb-3">尋找餐廳：</h4>
         <div class="input-group">
           <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
             value="{{keyword}}" aria-describedby="search-button">
           <div class="input-group-append">
-            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search">Search</i></button>
+            <button class="btn btn-major" type="submit" id="search-button"><i
+                class="fas fa-search mr-1"></i>Search</button>
           </div>
         </div>
       </form>
@@ -38,7 +44,7 @@
                 <i class="fas fa-utensils pr-2"></i> {{this.category}}
               </div>
 
-              <span class="badge badge-pill badge-danger font-weight-normal">
+              <span class="badge badge-pill badge-danger font-weight-bold p-1 mt-1">
                 {{this.rating}}
                 <i class="fas fa-star fa-xs"></i>
               </span>
