@@ -8,6 +8,9 @@
 <h4> 餐廳詳細資訊頁面 </h4>
 <img align="center" src="https://github.com/hazelisles/AC-restaurant-list/blob/master/show-page-demo.gif?raw=true" width="700"/>
 
+## 環境建置與需求
+* [Node.js](https://nodejs.org/en/): v14.16.1
+
 ## 安裝與執行步驟
 1. 打開終端機將專案下載至本地執行
 ```
@@ -17,9 +20,10 @@ git clone https://github.com/hazelisles/AC-restaurant-list.git
 ```
 cd AC-restaurant-list
 ```
-3. 安裝 Express, handlebars 套件
+3. 安裝專案需求套件
 ```
-npm install express express-handlebars
+npm install 
+npm i nodemon
 ```
 4. 啟動伺服器，執行專案
 ```
