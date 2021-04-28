@@ -3,7 +3,6 @@ const app = express()
 const port = 3000
 const mongoose = require('mongoose')
 const Restaurants = require('./models/restaurant')
-const restaurantList = require('./restaurant.json')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 
@@ -104,13 +103,13 @@ app.post('/restaurants/:id/delete', (req, res) => {
 })
 
 app.get('/search', (req, res) => {
-  const keyword = req.query.keyword.trim()
-  const restaurant = restaurantList.results.filter(r => r.category.includes(keyword) || r.name.toLowerCase().includes(keyword.toLowerCase()))
-  let unFind = false
-  if (restaurant.length === 0) {
-    unFind = true
-  }
-  res.render('index', { restaurant, keyword, unFind })
+  const keyword = req.query.keyword
+  const keywordU = req.query.keyword.trim().toUpperCase()
+  const keywordL = req.query.keyword.trim().toLowerCase()
+  return Restaurants.find({"$or": [{"name": {$regex : new RegExp(keywordU) }}, {"name": {$regex : new RegExp(keywordL) }}, {"category": { $regex : new RegExp(keyword) }}, {"name_en": { $regex : new RegExp(keywordU) }}, {"name_en": {$regex : new RegExp(keywordL) }}]})
+    .lean()
+    .then(restaurant => res.render('index', { restaurant, keyword }))
+    .catch(error => console.log(error))
 })
 
 app.listen(port, () => {

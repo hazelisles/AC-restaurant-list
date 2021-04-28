@@ -1,14 +1,14 @@
 <h1 class="mb-1 restaurant-show-title">{{ restaurant.name }}</h1>
 <div class="container">
   <div class="d-flex justify-content-end mb-3">
-    <a href="/restaurants/{{ restaurant._id }}/edit" class="btn btn-success mr-3">
+    <a href="/restaurants/{{ restaurant._id }}/edit" class="btn btn-success mr-3 btn-motion">
       Edit
     </a>
     <form action="/restaurants/{{ restaurant._id }}/delete" method="POST" style="display: inline;"
       onsubmit="return deleteConfirm();">
-      <button class="btn btn-danger mr-3">Delete</button>
+      <button class="btn btn-danger mr-3 btn-motion">Delete</button>
     </form>
-    <a href="/" class="btn btn-dark">
+    <a href="/" class="btn btn-dark btn-motion">
       Back
     </a>
   </div>

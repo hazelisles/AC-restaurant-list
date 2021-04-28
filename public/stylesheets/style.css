@@ -158,7 +158,7 @@ header {
 }
 
 .card:active {
-  transform: scale(0.96);
+  transform: scale(0.97);
   transition: transform 0.1s;
 }
 
@@ -204,11 +204,13 @@ header {
   font-size: 1.3rem;
 }
 
-.place-arrow:hover {
+.place-arrow:hover,
+.btn-motion:hover {
   transform: scale(1.1);
 }
 
-.place-arrow:active {
+.place-arrow:active,
+.btn-motion:active {
   transform: scale(0.96);
   transition: transform 0.2s;
 }
@@ -243,16 +245,36 @@ header {
   .card img {
     height: 115px;
   }
+  .h-text-one {
+    font-size: 28px;
+  }
+  .h-text-two {
+    font-size: 28px;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .restaurant-show-title {
     font-size: 2rem;
   }
+  .h-text-one {
+    font-size: 24px;
+  }
+  .h-text-two {
+    font-size: 24px;
+  }
 }
 
 @media screen and (max-width: 575px) {
   .card img {
     height: auto;
+  }
+  .h-text-one {
+    font-size: 20px;
+    top: 23%;
+  }
+  .h-text-two {
+    font-size: 20px;
+    top: 43%;
   }
 }

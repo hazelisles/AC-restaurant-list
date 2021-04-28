@@ -25,12 +25,12 @@
 <!-- restaurant list -->
 <div class="container mt-5">
   <div class="row">
-    {{#if unFind}}
-    <div class="alertText">
+    {{#unless restaurant}}
+    <div class="alertText mb-3">
       <p>沒有搜尋到任何符合關鍵字：{{ keyword }} 的餐廳</p>
       <p>Can not find any Restaurant with keyword: {{ keyword }}</p>
     </div>
-    {{/if}}
+    {{/unless}}
     <div class="col-md-10 col-12 mx-auto">
       <div class="card-columns">
         {{#each restaurant}}
