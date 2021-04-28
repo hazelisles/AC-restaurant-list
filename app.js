@@ -24,25 +24,26 @@ app.set('view engine', 'handlebars')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
+// 首頁路由
 app.get('/', (req, res) => {
   Restaurants.find()
     .lean()
     .then(Restaurants => res.render('index', { restaurant: Restaurants }))
     .catch(error => console.log(error))
 })
-
+// detail page
 app.get('/restaurants/:id', (req, res) => {
   const id = req.params.id
   return Restaurants.findById(id)
     .lean()
-    .then(Restaurant => res.render('detail', { restaurant: Restaurant }))
+    .then(restaurant => res.render('detail', { restaurant }))
     .catch(error => console.log(error))  
 })
-
+// create page
 app.get('/create', (req, res) => {
   return res.render('create')
 })
-
+// receive creation redirect to 首頁
 app.post('/restaurants', (req, res) => {
   const name = req.body.name
   const name_en = req.body.name_en
@@ -55,6 +56,42 @@ app.post('/restaurants', (req, res) => {
   const description = req.body.description
   return Restaurants.create({ name, name_en, category, image, location, phone, google_map, rating, description })
     .then(() => res.redirect('/')) 
+    .catch(error => console.log(error))
+})
+// edit page
+app.get('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Restaurants.findById(id)
+    .lean()
+    .then(restaurant => res.render('edit', { restaurant }))
+    .catch(error => console.log(error))  
+})
+// receive edit redirect to detail page
+app.post('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  const name = req.body.name
+  const name_en = req.body.name_en
+  const category = req.body.category
+  const image = req.body.image
+  const location = req.body.location
+  const phone = req.body.phone
+  const google_map = req.body.google_map
+  const rating = Number(req.body.rating)
+  const description = req.body.description
+  return Restaurants.findById(id)
+    .then(r => {
+      r.name = name
+      r.name_en = name_en
+      r.category = category
+      r.image = image
+      r.location = location
+      r.phone = phone
+      r.google_map = google_map
+      r.rating = rating
+      r.description = description
+      return r.save()
+    })
+    .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => console.log(error))
 })
 

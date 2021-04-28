@@ -1,7 +1,24 @@
 <h1 class="mb-1 restaurant-show-title">{{restaurant.name}}</h1>
 <div class="container">
+  <div class="d-flex justify-content-end mb-3">
+    <a href="/restaurants/{{restaurant._id}}/edit" class="btn btn-success mr-3">
+      Edit
+    </a>
+    <a href="/" class="btn btn-dark">
+      Back
+    </a>
+  </div>
   <div class="row">
     <div class="col-12 col-md-10 mx-auto">
+      {{#if restaurant.name_en}}
+      <p class="mb-2 sub-t">
+        <span class="text-secondary">
+          <i class="fas fa-signature pr-2"></i>
+          英文名稱：
+        </span>
+        {{restaurant.name_en}}
+      </p>
+      {{/if}}
       <p class="mb-2 sub-t">
         <span class="text-secondary">
           <i class="fas fa-utensils pr-2"></i>
@@ -28,14 +45,15 @@
         </span>
         {{restaurant.phone}}
       </p>
-
-      <p class="mb-5 px-3 py-2 show-des">
+      {{#if restaurant.description}}
+      <p class="my-5 px-3 py-2 show-des">
         <i class="fas fa-quote-left quote-left"></i>
         {{restaurant.description}}
         <i class="fas fa-quote-right quote-right"></i>
       </p>
+      {{/if}}
 
-      <img class="rounded mx-auto d-block mb-4 w-100 res-image" src="{{restaurant.image}}" alt="{{restaurant.name}}"
+      <img class="rounded mx-auto d-block mb-5 w-100 res-image" src="{{restaurant.image}}" alt="{{restaurant.name}}"
         style="max-width: 600px;">
     </div>
   </div>
