@@ -1,9 +1,13 @@
-<h1 class="mb-1 restaurant-show-title">{{restaurant.name}}</h1>
+<h1 class="mb-1 restaurant-show-title">{{ restaurant.name }}</h1>
 <div class="container">
   <div class="d-flex justify-content-end mb-3">
-    <a href="/restaurants/{{restaurant._id}}/edit" class="btn btn-success mr-3">
+    <a href="/restaurants/{{ restaurant._id }}/edit" class="btn btn-success mr-3">
       Edit
     </a>
+    <form action="/restaurants/{{ restaurant._id }}/delete" method="POST" style="display: inline;"
+      onsubmit="return deleteConfirm();">
+      <button class="btn btn-danger mr-3">Delete</button>
+    </form>
     <a href="/" class="btn btn-dark">
       Back
     </a>
@@ -16,7 +20,7 @@
           <i class="fas fa-signature pr-2"></i>
           英文名稱：
         </span>
-        {{restaurant.name_en}}
+        {{ restaurant.name_en }}
       </p>
       {{/if}}
       <p class="mb-2 sub-t">
@@ -24,7 +28,7 @@
           <i class="fas fa-utensils pr-2"></i>
           類別：
         </span>
-        {{restaurant.category}}
+        {{ restaurant.category }}
       </p>
 
       <p class="mb-2 sub-t">
@@ -32,8 +36,8 @@
           <i class="fas fa-map-marker-alt pr-2"></i>
           地址：
         </span>
-        {{restaurant.location}}
-        <a href="{{restaurant.google_map}}" class="text-secondary" target="_blank">
+        {{ restaurant.location }}
+        <a href="{{ restaurant.google_map }}" class="text-secondary" target="_blank">
           <i class="fas fa-location-arrow pr-2 fa-xs place-arrow"></i>
         </a>
       </p>
@@ -43,18 +47,18 @@
           <i class="fas fa-mobile-alt pr-2"></i>
           電話：
         </span>
-        {{restaurant.phone}}
+        {{ restaurant.phone }}
       </p>
       {{#if restaurant.description}}
       <p class="my-5 px-3 py-2 show-des">
         <i class="fas fa-quote-left quote-left"></i>
-        {{restaurant.description}}
+        {{ restaurant.description }}
         <i class="fas fa-quote-right quote-right"></i>
       </p>
       {{/if}}
 
-      <img class="rounded mx-auto d-block mb-5 w-100 res-image" src="{{restaurant.image}}" alt="{{restaurant.name}}"
-        style="max-width: 600px;">
+      <img class="rounded mx-auto d-block mb-5 w-100 res-image" src="{{ restaurant.image }}"
+        alt="{{ restaurant.name_en }} image link crash" style="max-width: 600px;">
     </div>
   </div>
 </div>

@@ -94,6 +94,14 @@ app.post('/restaurants/:id', (req, res) => {
     .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => console.log(error))
 })
+// delete
+app.post('/restaurants/:id/delete', (req, res) => {
+  const id = req.params.id
+  return Restaurants.findById(id)
+    .then(r => r.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
 
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim()
