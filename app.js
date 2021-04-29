@@ -10,12 +10,8 @@ mongoose.connect('mongodb://localhost/restaurant-list',  { useNewUrlParser: true
 
 const db = mongoose.connection
 
-db.on('error', () => {
-  console.log('mongodb error!')
-})
-db.once('open', () => {
-  console.log('mongodb connected!')
-})
+db.on('error', () => console.log('mongodb error!'))
+db.once('open', () => console.log('mongodb connected!'))
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
@@ -103,10 +99,8 @@ app.post('/restaurants/:id/delete', (req, res) => {
 })
 
 app.get('/search', (req, res) => {
-  const keyword = req.query.keyword
-  const keywordU = req.query.keyword.trim().toUpperCase()
-  const keywordL = req.query.keyword.trim().toLowerCase()
-  return Restaurants.find({"$or": [{"name": {$regex : new RegExp(keywordU) }}, {"name": {$regex : new RegExp(keywordL) }}, {"category": { $regex : new RegExp(keyword) }}, {"name_en": { $regex : new RegExp(keywordU) }}, {"name_en": {$regex : new RegExp(keywordL) }}]})
+  const keyword = req.query.keyword.trim()
+  return Restaurants.find({"$or": [{"name": {$regex : new RegExp(keyword, "i") }},  {"category": { $regex : new RegExp(keyword, "i") }}, {"name_en": { $regex : new RegExp(keyword, "i") }}]})
     .lean()
     .then(restaurant => res.render('index', { restaurant, keyword }))
     .catch(error => console.log(error))
