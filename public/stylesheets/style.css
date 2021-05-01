@@ -183,8 +183,11 @@ header {
 .restaurant-show-title {
   position: relative;
   top: -100px;
-  color: white;
   text-align: center;
+}
+
+#restaurant-title {
+  color: white;
   font-size: 3rem;
   text-shadow: 0.1rem 0.1rem 0.3rem black, -0.1rem -0.1rem 0.5rem black;
   font-weight: bold;
