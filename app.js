@@ -39,6 +39,10 @@ app.get('/create', (req, res) => {
 })
 // receive creation redirect to 首頁
 app.post('/restaurants', (req, res) => {
+  if (!req.body.image) {
+    // if no image link use Default image
+    req.body.image = 'https://i.pinimg.com/564x/d8/4d/5b/d84d5bbd8f83a7e03193da998c801a9a.jpg'
+  }
   return Restaurants.create(req.body)
     .then(() => res.redirect('/')) 
     .catch(error => console.log(error))
