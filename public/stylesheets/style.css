@@ -153,12 +153,12 @@ header {
 }
 
 .card:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
 }
 
 .card:active {
-  transform: scale(0.97);
+  transform: scale(0.98);
   transition: transform 0.1s;
 }
 
