@@ -39,16 +39,7 @@ app.get('/create', (req, res) => {
 })
 // receive creation redirect to 首頁
 app.post('/restaurants', (req, res) => {
-  const name = req.body.name
-  const name_en = req.body.name_en
-  const category = req.body.category
-  const image = req.body.image
-  const location = req.body.location
-  const phone = req.body.phone
-  const google_map = req.body.google_map
-  const rating = req.body.rating
-  const description = req.body.description
-  return Restaurants.create({ name, name_en, category, image, location, phone, google_map, rating, description })
+  return Restaurants.create(req.body)
     .then(() => res.redirect('/')) 
     .catch(error => console.log(error))
 })
