@@ -207,6 +207,11 @@ header {
   font-size: 1.3rem;
 }
 
+.required-text {
+  font-weight: normal;
+  color: red;
+}
+
 .place-arrow:hover,
 .btn-motion:hover {
   transform: scale(1.1);
