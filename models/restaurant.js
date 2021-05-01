@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const { Schema } = mongoose
 const restaurantsSchema = new Schema({
   name: {
     type: String,
@@ -9,13 +9,15 @@ const restaurantsSchema = new Schema({
     type: String
   },
   category: {
-    type: String
+    type: String,
+    required: true
   },
   image: {
     type: String
   },
   location: {
-    type: String
+    type: String,
+    required: true
   },
   phone: {
     type: String
@@ -24,7 +26,8 @@ const restaurantsSchema = new Schema({
     type: String
   },
   rating: {
-    type: Number
+    type: Number,
+    required: true
   },
   description: {
     type: String

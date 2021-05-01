@@ -4,7 +4,6 @@ const port = 3000
 const mongoose = require('mongoose')
 const Restaurants = require('./models/restaurant')
 const exphbs = require('express-handlebars')
-const bodyParser = require('body-parser')
 
 mongoose.connect('mongodb://localhost/restaurant-list',  { useNewUrlParser: true, useUnifiedTopology: true })
 
@@ -16,7 +15,7 @@ db.once('open', () => console.log('mongodb connected!'))
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
 // 首頁路由
@@ -28,7 +27,7 @@ app.get('/', (req, res) => {
 })
 // detail page
 app.get('/restaurants/:id', (req, res) => {
-  const id = req.params.id
+  const { id } = req.params
   return Restaurants.findById(id)
     .lean()
     .then(restaurant => res.render('detail', { restaurant }))
@@ -47,7 +46,7 @@ app.post('/restaurants', (req, res) => {
   const location = req.body.location
   const phone = req.body.phone
   const google_map = req.body.google_map
-  const rating = Number(req.body.rating)
+  const rating = req.body.rating
   const description = req.body.description
   return Restaurants.create({ name, name_en, category, image, location, phone, google_map, rating, description })
     .then(() => res.redirect('/')) 
@@ -55,7 +54,7 @@ app.post('/restaurants', (req, res) => {
 })
 // edit page
 app.get('/restaurants/:id/edit', (req, res) => {
-  const id = req.params.id
+  const { id } = req.params
   return Restaurants.findById(id)
     .lean()
     .then(restaurant => res.render('edit', { restaurant }))
@@ -63,27 +62,10 @@ app.get('/restaurants/:id/edit', (req, res) => {
 })
 // receive edit redirect to detail page
 app.post('/restaurants/:id', (req, res) => {
-  const id = req.params.id
-  const name = req.body.name
-  const name_en = req.body.name_en
-  const category = req.body.category
-  const image = req.body.image
-  const location = req.body.location
-  const phone = req.body.phone
-  const google_map = req.body.google_map
-  const rating = Number(req.body.rating)
-  const description = req.body.description
+  const { id } = req.params
   return Restaurants.findById(id)
     .then(r => {
-      r.name = name
-      r.name_en = name_en
-      r.category = category
-      r.image = image
-      r.location = location
-      r.phone = phone
-      r.google_map = google_map
-      r.rating = rating
-      r.description = description
+      r = Object.assign(r, req.body)
       return r.save()
     })
     .then(() => res.redirect(`/restaurants/${id}`))
@@ -91,7 +73,7 @@ app.post('/restaurants/:id', (req, res) => {
 })
 // delete
 app.post('/restaurants/:id/delete', (req, res) => {
-  const id = req.params.id
+  const { id } = req.params
   return Restaurants.findById(id)
     .then(r => r.remove())
     .then(() => res.redirect('/'))
