@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Restaurants = require('../restaurant')
-const { results: restaurants } = require('C:\\Users\\zhccj\\AlphaCamp\\2-3\\restaurant_list\\restaurant.json')
+const { results: restaurants } = require('../../restaurant')
 
 mongoose.connect('mongodb://localhost/restaurant-list',  { useNewUrlParser: true, useUnifiedTopology: true })
 
