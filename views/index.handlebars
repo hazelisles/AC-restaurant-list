@@ -4,14 +4,14 @@
 </div>
 
 <!-- search bar -->
-<div class="container search-bar">
-  <div class="search-bar-outer">
-    <div class="search-bar-inner">
+<div class="container search-bar mt-5">
+  <div class="row justify-content-between align-items-center">
+    <div class="search-field">
       <form action="/search">
-        <h4 class="mb-3">尋找餐廳：</h4>
-        <div class="input-group">
-          <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
-            value="{{ keyword }}" aria-describedby="search-button">
+        <div class="input-group search-container">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" name="keyword" class="form-control search-box" placeholder="輸入餐廳、分類"
+            aria-label="Restaurant Name..." value="{{ keyword }}" aria-describedby="search-button">
           <div class="input-group-append">
             <button class="btn btn-major" type="submit" id="search-button"><i
                 class="fas fa-search mr-1"></i>Search</button>
@@ -19,11 +19,25 @@
         </div>
       </form>
     </div>
+
+    <div class="dropdown sort-field">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        -- 排序類別 Sort --
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">依名稱 A => Z</a>
+        <a class="dropdown-item" href="#">依名稱 Z => A</a>
+        <a class="dropdown-item" href="#">依類別排序</a>
+        <a class="dropdown-item" href="#">依評分 5 => 1</a>
+        <a class="dropdown-item" href="#">依評分 1 => 5</a>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- restaurant list -->
-<div class="container mt-5">
+<div class="container mt-3">
   <div class="row">
     {{#unless restaurant}}
     <div class="alertText mb-3">
@@ -31,10 +45,10 @@
       <p>Can not find any Restaurant with keyword: {{ keyword }}</p>
     </div>
     {{/unless}}
-    <div class="col-md-10 col-12 mx-auto">
-      <div class="card-columns">
-        {{#each restaurant}}
-        <div class="card mb-3">
+    <div class="row align-items-center justify-content-evenly">
+      {{#each restaurant}}
+      <div class="col-xl-3 col-md-4 col-6">
+        <div class="card my-3">
           <a href="/restaurants/{{ this._id }}" class="text-secondary" style="text-decoration:none">
             <img class="card-img-top" src="{{ this.image }}" alt="{{ this.name }} image link crash">
             <div class="card-body p-3">
@@ -61,8 +75,8 @@
             </form>
           </div>
         </div>
-        {{/each}}
       </div>
+      {{/each}}
     </div>
   </div>
 </div>
