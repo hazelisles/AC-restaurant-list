@@ -4,6 +4,7 @@ const port = 3000
 const mongoose = require('mongoose')
 const Restaurants = require('./models/restaurant')
 const exphbs = require('express-handlebars')
+const methodOverride = require('method-override')
 
 mongoose.connect('mongodb://localhost/restaurant-list',  { useNewUrlParser: true, useUnifiedTopology: true })
 
@@ -16,6 +17,7 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 app.use(express.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 app.use(express.static('public'))
 
 // 首頁路由
@@ -56,7 +58,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
     .catch(error => console.log(error))  
 })
 // receive edit redirect to detail page
-app.post('/restaurants/:id', (req, res) => {
+app.put('/restaurants/:id', (req, res) => {
   const { id } = req.params
   return Restaurants.findById(id)
     .then(r => {
@@ -67,7 +69,7 @@ app.post('/restaurants/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 // delete
-app.post('/restaurants/:id/delete', (req, res) => {
+app.delete('/restaurants/:id', (req, res) => {
   const { id } = req.params
   return Restaurants.findById(id)
     .then(r => r.remove())

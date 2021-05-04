@@ -55,7 +55,7 @@
             <a href="/restaurants/{{ this._id }}/edit" class="btn btn-sm btn-outline-success">
               Edit
             </a>
-            <form action="./restaurants/{{ this._id }}/delete" method="POST" style="display: inline;"
+            <form action="./restaurants/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;"
               onsubmit="return deleteConfirm();">
               <button class="btn btn-sm btn-outline-danger ml-2">Delete</button>
             </form>
