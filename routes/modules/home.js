@@ -6,6 +6,7 @@ const Restaurants = require('../../models/restaurant')
 router.get('/', (req, res) => {
   Restaurants.find()
     .lean()
+    .sort({ _id: 'asc' })
     .then(Restaurants => res.render('index', { restaurant: Restaurants }))
     .catch(error => console.log(error))
 })
