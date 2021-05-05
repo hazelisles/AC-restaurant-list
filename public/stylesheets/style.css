@@ -106,6 +106,28 @@ header {
   border-radius: 5px;
 }
 
+.ratings {
+  position: relative;
+  top: -220px;
+  left: 42%;
+  align-self: center;
+  vertical-align: middle;
+  display: inline-block;
+  color: rgba(230, 230, 230, 0.9);
+  /* overflow: hidden; */
+  font-size: 32px; /*調整字體大小可放大縮小星星*/
+  text-shadow: -7px 7px 2px black;
+}
+
+.full-star {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  color: yellow; /*前景星星顏色*/
+}
+
 .search-container {
   display: inline-flex;
   flex: 1 1 100%;
@@ -187,9 +209,13 @@ header {
   position: relative;
   top: -100px;
   text-align: center;
+  color: white;
+  font-size: 3rem;
+  text-shadow: 0.1rem 0.1rem 0.3rem black, -0.1rem -0.1rem 0.5rem black;
+  font-weight: bold;
 }
 
-.restaurant-title {
+.link-title {
   color: white;
   font-size: 3rem;
   text-shadow: 0.1rem 0.1rem 0.3rem black, -0.1rem -0.1rem 0.5rem black;
