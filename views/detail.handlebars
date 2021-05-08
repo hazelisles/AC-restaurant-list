@@ -87,3 +87,8 @@
     </div>
   </div>
 </div>
+<script>
+  const r = ({{ restaurant.rating }} * 20)
+  const star = document.querySelector('.full-star')
+  star.style = `width: ${r}%`
+</script>

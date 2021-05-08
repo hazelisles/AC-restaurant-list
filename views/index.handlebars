@@ -66,14 +66,14 @@
                 {{ this.rating }}
                 <i class="fas fa-star"></i>
               </span>
-
             </div>
           </a>
+
           <div class="card-footer d-flex justify-content-end">
             <a href="/restaurants/{{ this._id }}/edit" class="btn btn-sm btn-outline-success">
               Edit
             </a>
-            <form action="./restaurants/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;"
+            <form action="/restaurants/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;"
               onsubmit="return deleteConfirm();">
               <button class="btn btn-sm btn-outline-danger ml-2">Delete</button>
             </form>
