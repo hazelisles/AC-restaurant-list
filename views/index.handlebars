@@ -21,19 +21,27 @@
     </div>
 
     <div class="dropdown sort-field my-2">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownTitle" data-toggle="dropdown"
         style="width: 200px;" aria-haspopup="true" aria-expanded="false">
         -- 排序類別 Sort --
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <form action="/sort" method="get">
-          <button type="submit" name="sort" value="a" class="dropdown-item">依名稱 A => Z</button>
-          <button type="submit" name="sort" value="z" class="dropdown-item">依名稱 Z => A</button>
-          <button type="submit" name="sort" value="category" class="dropdown-item">依類別排序</button>
-          <button type="submit" name="sort" value="ra" class="dropdown-item">依評分 5 => 1</button>
-          <button type="submit" name="sort" value="rz" class="dropdown-item">依評分 1 => 5</button>
-          <button type="submit" name="sort" value="ta" class="dropdown-item">依新增時間 new => old</button>
-          <button type="submit" name="sort" value="tz" class="dropdown-item">依新增時間 old => new</button>
+          <button type="submit" name="sort" value="a" id="a" class="dropdown-item">依名稱 A =>
+            Z</button>
+          <button type="submit" name="sort" value="z" id="z" class="dropdown-item">依名稱 Z =>
+            A</button>
+          <button type="submit" name="sort" value="category" id="category" class="dropdown-item">依類別排序</button>
+          <button type="submit" name="sort" value="ra" id="ra" class="dropdown-item">依評分 5 =>
+            1</button>
+          <button type="submit" name="sort" value="rz" id="rz" class="dropdown-item">依評分 1 =>
+            5</button>
+          <button type="submit" name="sort" value="ta" id="ta" class="dropdown-item">依新增時間 new
+            =>
+            old</button>
+          <button type="submit" name="sort" value="tz" id="tz" class="dropdown-item">依新增時間 old
+            =>
+            new</button>
         </form>
       </div>
     </div>
