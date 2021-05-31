@@ -29,18 +29,24 @@
                 alt="我的餐廳清單"
               ></i>
             </div>
-            <div class="navbar-title ml-2">我的餐廳清單</div>
+            <div class="navbar-title ml-2">
+              {{#if isAuthenticated}}
+                {{user.name}}
+                的{{/if}}餐廳清單</div>
           </a>
           <div class="btngroup">
-            <a href="/create" class="btn btn-outline-light btn-motion">
-              Create New Restaurant
-            </a>
-            <a href="/users/login" class="btn btn-outline-light btn-motion">
-              Sign In
-            </a>
-            <a href="/users/logout" class="btn btn-outline-light btn-motion">
-              Sign Out
-            </a>
+            {{#if isAuthenticated}}
+              <a href="/create" class="btn btn-outline-light btn-motion">
+                Create New Restaurant
+              </a>
+              <a href="/users/logout" class="btn btn-outline-light btn-motion">
+                Sign Out
+              </a>
+            {{else}}
+              <a href="/users/login" class="btn btn-outline-light btn-motion">
+                Sign In
+              </a>
+            {{/if}}
           </div>
         </div>
       </nav>
