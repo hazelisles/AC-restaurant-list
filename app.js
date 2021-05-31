@@ -7,9 +7,9 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 const port = process.env.PORT
+const usePassport = require('./config/passport')
 const routes = require('./routes')
 require('./config/mongoose')
-
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
@@ -22,6 +22,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
+usePassport(app)
 app.use(routes)
 
 app.listen(port, () => {
