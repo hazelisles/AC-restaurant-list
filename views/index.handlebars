@@ -10,38 +10,87 @@
       <form action="/search">
         <div class="input-group search-container">
           <i class="fas fa-search search-icon"></i>
-          <input type="text" name="keyword" class="form-control search-box" placeholder="輸入餐廳、分類"
-            aria-label="Restaurant Name..." value="{{ keyword }}" aria-describedby="search-button">
+          <input
+            type="text"
+            name="keyword"
+            class="form-control search-box"
+            placeholder="輸入餐廳、分類"
+            aria-label="Restaurant Name..."
+            value="{{keyword}}"
+            aria-describedby="search-button"
+          />
           <div class="input-group-append">
             <button class="btn btn-major" type="submit" id="search-button"><i
-                class="fas fa-search mr-1"></i>Search</button>
+                class="fas fa-search mr-1"
+              ></i>Search</button>
           </div>
         </div>
       </form>
     </div>
 
     <div class="dropdown sort-field my-2">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownTitle" data-toggle="dropdown"
-        style="width: 200px;" aria-haspopup="true" aria-expanded="false">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownTitle"
+        data-toggle="dropdown"
+        style="width: 200px;"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
         -- 排序類別 Sort --
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <form action="/sort" method="get">
-          <button type="submit" name="sort" value="a" id="a" class="dropdown-item">依名稱 A =>
-            Z</button>
-          <button type="submit" name="sort" value="z" id="z" class="dropdown-item">依名稱 Z =>
-            A</button>
-          <button type="submit" name="sort" value="category" id="category" class="dropdown-item">依類別排序</button>
-          <button type="submit" name="sort" value="ra" id="ra" class="dropdown-item">依評分 5 =>
-            1</button>
-          <button type="submit" name="sort" value="rz" id="rz" class="dropdown-item">依評分 1 =>
-            5</button>
-          <button type="submit" name="sort" value="ta" id="ta" class="dropdown-item">依新增時間 new
-            =>
-            old</button>
-          <button type="submit" name="sort" value="tz" id="tz" class="dropdown-item">依新增時間 old
-            =>
-            new</button>
+          <button
+            type="submit"
+            name="sort"
+            value="a"
+            id="a"
+            class="dropdown-item"
+          >依名稱 A => Z</button>
+          <button
+            type="submit"
+            name="sort"
+            value="z"
+            id="z"
+            class="dropdown-item"
+          >依名稱 Z => A</button>
+          <button
+            type="submit"
+            name="sort"
+            value="category"
+            id="category"
+            class="dropdown-item"
+          >依類別排序</button>
+          <button
+            type="submit"
+            name="sort"
+            value="ra"
+            id="ra"
+            class="dropdown-item"
+          >依評分 5 => 1</button>
+          <button
+            type="submit"
+            name="sort"
+            value="rz"
+            id="rz"
+            class="dropdown-item"
+          >依評分 1 => 5</button>
+          <button
+            type="submit"
+            name="sort"
+            value="ta"
+            id="ta"
+            class="dropdown-item"
+          >依新增時間 new => old</button>
+          <button
+            type="submit"
+            name="sort"
+            value="tz"
+            id="tz"
+            class="dropdown-item"
+          >依新增時間 old => new</button>
         </form>
       </div>
     </div>
@@ -52,42 +101,59 @@
 <div class="container mt-3">
   <div class="row">
     {{#unless restaurant}}
-    <div class="alertText mb-3">
-      <p>沒有搜尋到任何符合關鍵字：{{ keyword }} 的餐廳</p>
-      <p>Can not find any Restaurant with keyword: {{ keyword }}</p>
-    </div>
+      <div class="alertText mb-3">
+        <p>沒有搜尋到任何符合關鍵字：{{keyword}} 的餐廳</p>
+        <p>Can not find any Restaurant with keyword: {{keyword}}</p>
+      </div>
     {{/unless}}
     <div class="row align-items-center justify-content-evenly">
       {{#each restaurant}}
-      <div class="col-xl-3 col-md-4 col-6">
-        <div class="card my-3">
-          <a href="/restaurants/{{ this._id }}" class="text-secondary" style="text-decoration:none">
-            <img class="card-img-top" src="{{ this.image }}" alt="{{ this.name }} image link crash">
-            <div class="card-body p-3">
-              <h6 class="card-title mb-1">{{ this.name }}</h6>
+        <div class="col-xl-3 col-md-4 col-6">
+          <div class="card rcard my-3">
+            <a
+              href="/restaurants/{{this._id}}"
+              class="text-secondary"
+              style="text-decoration:none"
+            >
+              <img
+                class="card-img-top"
+                src="{{this.image}}"
+                alt="{{this.name}} image link crash"
+              />
+              <div class="card-body p-3">
+                <h6 class="card-title mb-1">{{this.name}}</h6>
 
-              <div class="restaurant-category mb-1">
-                <i class="fas fa-utensils pr-2"></i> {{ this.category }}
+                <div class="restaurant-category mb-1">
+                  <i class="fas fa-utensils pr-2"></i>
+                  {{this.category}}
+                </div>
+
+                <span
+                  class="badge badge-pill badge-danger font-weight-bold p-2 mt-1"
+                >
+                  {{this.rating}}
+                  <i class="fas fa-star"></i>
+                </span>
               </div>
-
-              <span class="badge badge-pill badge-danger font-weight-bold p-2 mt-1">
-                {{ this.rating }}
-                <i class="fas fa-star"></i>
-              </span>
-            </div>
-          </a>
-
-          <div class="card-footer d-flex justify-content-end">
-            <a href="/restaurants/{{ this._id }}/edit" class="btn btn-sm btn-outline-success">
-              Edit
             </a>
-            <form action="/restaurants/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;"
-              onsubmit="return deleteConfirm();">
-              <button class="btn btn-sm btn-outline-danger ml-2">Delete</button>
-            </form>
+
+            <div class="card-footer d-flex justify-content-end">
+              <a href="/restaurants/{{this._id}}/edit">
+                <button class="btn btn-sm btn-outline-success">Edit</button>
+              </a>
+              <form
+                action="/restaurants/{{this._id}}?_method=DELETE"
+                method="POST"
+                style="display: inline;"
+                onsubmit="return deleteConfirm();"
+              >
+                <button
+                  class="btn btn-sm btn-outline-danger ml-2"
+                >Delete</button>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
       {{/each}}
     </div>
   </div>

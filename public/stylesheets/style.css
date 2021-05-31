@@ -177,17 +177,17 @@ header {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
 }
 
-.card:hover {
+.rcard:hover {
   transform: scale(1.03);
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
 }
 
-.card:active {
+.rcard:active {
   transform: scale(0.98);
   transition: transform 0.1s;
 }
 
-.card img {
+.rcard img {
   height: 180px;
 }
 
