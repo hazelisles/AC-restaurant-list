@@ -25,7 +25,11 @@ router.get('/search', async (req, res) => {
     const query = new RegExp(keyword, "i")
     const userId = req.user._id
     const restaurant = await Restaurants.find({ userId, "$or": [{ "name": { $regex: query } }, { "category": { $regex: query } }, { "name_en": { $regex: query } }] }).lean()
-    return res.render('index', { restaurant, keyword })
+    let result = false
+    if (restaurant.length === 0) {
+      result = true
+    }
+    return res.render('index', { restaurant, keyword, result })
   } catch (error) {
     console.log(error)
   }

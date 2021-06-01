@@ -100,12 +100,12 @@
 <!-- restaurant list -->
 <div class="container mt-3">
   <div class="row">
-    {{#unless restaurant}}
+    {{#if result}}
       <div class="alertText mb-3">
         <p>沒有搜尋到任何符合關鍵字：{{keyword}} 的餐廳</p>
         <p>Can not find any Restaurant with keyword: {{keyword}}</p>
       </div>
-    {{/unless}}
+    {{/if}}
     <div class="row align-items-center justify-content-evenly">
       {{#each restaurant}}
         <div class="col-xl-3 col-md-4 col-6">
