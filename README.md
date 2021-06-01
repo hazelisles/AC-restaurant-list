@@ -1,20 +1,23 @@
-# 我的餐廳清單2.0
+# 我的餐廳清單2.1
 一個使用Node.js, Express, handlebars, MongoDB打造的餐廳清單網站。可以瀏覽餐廳的資料與評分，並可以使用搜尋功能找到特定名稱或類型的餐廳。於2.0版本，可以自由新增、修改、刪除餐廳。
 
 ## 專案畫面
 <h4> 專案首頁 </h4>
-<img align="center" src="https://github.com/hazelisles/AC-restaurant-list/blob/master/main-page-demo-2.0.gif?raw=true" width="750"/>
+<img align="center" src="https://github.com/hazelisles/AC-restaurant-list/blob/master/images/main-page-demo-2.1.gif?raw=true" width="750"/>
 
 <h4> 餐廳詳細資訊頁面 </h4>
-<img align="center" src="https://github.com/hazelisles/AC-restaurant-list/blob/master/detail-page-demo-2.0.gif?raw=true" width="750"/>
+<img align="center" src="https://github.com/hazelisles/AC-restaurant-list/blob/master/images/detail-page-demo-2.1.gif?raw=true" width="750"/>
 
 ## 功能描述
 1. 可以在首頁瀏覽所有餐廳與它們的簡單資料
    * 名稱、照片、類別、評分
+   * 可以依照選定排序類別進行瀏覽(v2.1)
    
 2. 可以由各餐廳照片再點進去看各餐廳的詳細資訊
    * 英文名稱、類別、地址、電話、描述、照片
    * 可由地址後方箭號連結至Google Map
+   * 餐廳名稱上方以百分比呈現5星級評分(v2.1)
+   * 若有新增餐廳官網資訊可點選餐廳名稱連結至餐廳官網(v2.1)
    
 3. 可以透過搜尋餐廳名稱、類別來找到特定的餐廳
 
@@ -45,7 +48,7 @@ npm i nodemon
 ```
 npm run seed
 ```
-終端機顯示 `mongodb connected!` 即完成資料載入
+終端機顯示 `mongodb connected!` 及 `Done!` 即完成資料載入
 輸入 Ctrl + C 結束載入工作
 
 5. 啟動伺服器，執行專案
