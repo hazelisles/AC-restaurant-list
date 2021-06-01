@@ -1,11 +1,11 @@
-# 我的餐廳清單2.1
-一個使用Node.js, Express, handlebars, MongoDB打造的餐廳清單網站。可以瀏覽餐廳的資料與評分，並可以使用搜尋功能找到特定名稱或類型的餐廳。於2.0版本，可以自由新增、修改、刪除餐廳。
+# 我的餐廳清單3.0
+一個使用Node.js, Express, handlebars, MongoDB打造的餐廳清單網站。可以瀏覽餐廳的資料與評分，並可以使用搜尋功能找到特定名稱或類型的餐廳。於2.0版本，可以自由新增、修改、刪除餐廳。於3.0版本，新增用戶註冊登入功能，可依使用者顯示對應的餐廳清單。
 
 ## 專案畫面
-<h4> 專案首頁 </h4>
+<h4> 專案首頁(v2.1) </h4>
 <img align="center" src="https://github.com/hazelisles/AC-restaurant-list/blob/master/images/main-page-demo-2.1.gif?raw=true" width="750"/>
 
-<h4> 餐廳詳細資訊頁面 </h4>
+<h4> 餐廳詳細資訊頁面(v2.1) </h4>
 <img align="center" src="https://github.com/hazelisles/AC-restaurant-list/blob/master/images/detail-page-demo-2.1.gif?raw=true" width="750"/>
 
 ## 功能描述
@@ -27,6 +27,14 @@
 
 6. 可以刪除一家餐廳(v2.0)
 
+7. 使用者註冊、登入功能(v3.0)
+
+### 測試使用者帳號
+| 帳號 | 密碼 | 擁有餐廳 |
+|-----|------|---------|
+|user1@example.com|12345678|#1,#2,#3|
+|user2@example.com|12345678|#4,#5,#6|
+
 ## 環境建置與需求
 * [Node.js](https://nodejs.org/en/): v14.16.1
 
@@ -44,12 +52,11 @@ cd AC-restaurant-list
 npm install 
 npm i nodemon
 ```
-4. 產生預設餐廳資料至 MongoDB
+4. 產生預設用戶及餐廳資料至 MongoDB
 ```
 npm run seed
 ```
 終端機顯示 `mongodb connected!` 及 `Done!` 即完成資料載入
-輸入 Ctrl + C 結束載入工作
 
 5. 啟動伺服器，執行專案
 ```
