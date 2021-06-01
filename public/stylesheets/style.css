@@ -108,15 +108,14 @@ header {
 
 .ratings {
   position: relative;
-  top: -220px;
+  top: -240px;
   left: 42%;
   align-self: center;
   vertical-align: middle;
   display: inline-block;
   color: rgba(230, 230, 230, 0.9);
-  /* overflow: hidden; */
-  font-size: 32px; /*調整字體大小可放大縮小星星*/
-  text-shadow: -7px 7px 2px black;
+  font-size: 34px; /*調整字體大小可放大縮小星星*/
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.9), -7px 7px 2px black;
 }
 
 .full-star {
@@ -288,6 +287,11 @@ header {
   .h-text-two {
     font-size: 28px;
   }
+  .ratings {
+    left: 39%;
+    top: -230px;
+    font-size: 32px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -296,9 +300,16 @@ header {
   }
   .h-text-one {
     font-size: 24px;
+    top: 23%;
   }
   .h-text-two {
     font-size: 24px;
+    top: 43%;
+  }
+  .ratings {
+    left: 35%;
+    top: -210px;
+    font-size: 30px;
   }
 }
 
@@ -308,10 +319,15 @@ header {
   }
   .h-text-one {
     font-size: 20px;
-    top: 23%;
+    top: 25%;
   }
   .h-text-two {
     font-size: 20px;
-    top: 43%;
+    top: 45%;
+  }
+  .ratings {
+    left: 33%;
+    top: -200px;
+    font-size: 28px;
   }
 }

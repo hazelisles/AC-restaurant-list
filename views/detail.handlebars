@@ -28,16 +28,17 @@
   <div class="d-flex justify-content-end mb-3">
     <a href="/restaurants/{{ restaurant._id }}/edit">
      <button class="btn btn-success mr-3 btn-motion">
-      Edit
+      <i class="fas fa-edit"></i> Edit
      </button>
     </a>
     <form action="/restaurants/{{ restaurant._id }}?_method=DELETE" method="POST" style="display: inline;"
       onsubmit="return deleteConfirm();">
-      <button class="btn btn-danger mr-3 btn-motion">Delete</button>
+      <button class="btn btn-danger mr-3 btn-motion"><i
+      class="fas fa-trash-alt"></i> Delete</button>
     </form>
     <a href="/">
      <button class="btn btn-dark btn-motion">
-      Back
+      <i class="far fa-caret-square-left"></i> Back
       </button>
     </a>
   </div>
